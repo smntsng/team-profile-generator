@@ -83,8 +83,66 @@ const team = inquirer.prompt([
         when:function (answers) {
             return answers.teamMember === 'Engineer';
     },
-    },
-    
 
-]);
+    },
+    {
+        type: 'list',
+        message: 'Which type of team member would you like to add?',
+        name: 'nextTeamMember',
+        choices: ['Engineer',
+          'Intern',
+          'i don\'t want to add anymore team members.'],
+    },
+
+    {
+        type: 'input',
+        message: 'What is the Intern\'s name?',
+        name: 'internName',
+        when:function (answers) {
+            return answers.teamMember === 'Intern';
+    },
+    },
+
+    {
+        type: 'input',
+        message: 'What is the Engineer\'s id?',
+        name: 'internId',
+        when:function (answers) {
+            return answers.teamMember === 'Intern';
+    },
+    },
+
+    {
+        type: 'input',
+        message: 'What is the Engineer\'s email?',
+        name: 'internEmail',
+        when:function (answers) {
+            return answers.teamMember === 'Intern';
+    },
+    },
+
+    {
+        type: 'input',
+        message: 'What is the interns\'s school?',
+        name: 'internschool',
+        when:function (answers) {
+            return answers.teamMember === 'Intern';
+    },
+    },
+
+        {
+        type: 'list',
+        message: 'Which type of team member would you like to add?',
+        name: 'nextNextteamMember',
+        choices: ['Engineer',
+          'Intern',
+          'i don\'t want to add anymore team members.'],
+        },
+    ])
+        .then((answers) => {
+            console.log(answers);
+        });
+
+
+const manager = new Manager(answers.managerName);
 
